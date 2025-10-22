@@ -1,16 +1,17 @@
-language: node_js
-node_js:
-  - '18'  # Or your preferred Node version
+language: minimal
 sudo: required
 services:
   - docker
 
 branches:
   only:
-    - master  # or include other branches you push to
+    - master
+    - main  # optional: build other branches
 
 before_install:
-  - docker build -t hrishita20/docker-react -f Dockerfile.dev .
+  # Build the Docker image
+  - docker build -t hrishita20/docker-react -f Dockerfile .
 
 script:
-  - docker run -e CI=TRUE hrishita20/docker-react npm run test
+  # Run the container (CMD in Dockerfile handles tests)
+  - docker run -e CI=true hrishita20/docker-react
