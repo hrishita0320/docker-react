@@ -1,6 +1,13 @@
+language: node_js
+node_js:
+  - '18'  # Or your preferred Node version
 sudo: required
 services:
   - docker
+
+branches:
+  only:
+    - master  # or include other branches you push to
 
 before_install:
   - docker build -t hrishita20/docker-react -f Dockerfile.dev .
