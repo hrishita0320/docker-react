@@ -9,9 +9,8 @@ branches:
     - main  # optional: build other branches
 
 before_install:
-  # Build the Docker image
-  - docker build -t hrishita20/docker-react -f Dockerfile .
+  # Force rebuild without cache
+  - docker build --no-cache -t hrishita20/docker-react -f Dockerfile .
 
 script:
-  # Run the container (CMD in Dockerfile handles tests)
   - docker run -e CI=true hrishita20/docker-react
