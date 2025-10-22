@@ -10,7 +10,7 @@ branches:
 
 before_install:
   # Force rebuild without cache
-  - docker build --no-cache -t hrishita20/docker-react -f Dockerfile .
+  - docker build --no-cache -t hrishita20/docker-react -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true hrishita20/docker-react
