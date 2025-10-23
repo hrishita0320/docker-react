@@ -1,17 +1,10 @@
-# Use Node LTS Alpine for small image
-FROM node:lts
+FROM node:lts-alpine
 
-# Set working directory
-WORKDIR /app
+WORKDIR '/app'
 
-# Copy only package files first (better caching)
-COPY package.json package-lock.json* ./
-
-# Install dependencies
+COPY package.json .
 RUN npm install
 
-# Copy source code
 COPY . .
 
-# Default command: run tests
-CMD ["npm", "test"]
+CMD ["npm", "run", "start"]
